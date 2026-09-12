@@ -1,0 +1,6 @@
+name: Sapphire
+version: '1.0.0'
+main: me.nebu.sapphire.Sapphire
+api-version: '1.21'
+authors: [ Nebula ]
+description: All-in-one moderation suite for Minecraft servers.

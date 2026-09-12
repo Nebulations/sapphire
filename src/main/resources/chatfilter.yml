@@ -1,0 +1,25 @@
+chatfilter:
+  # Should the chat filter be enabled?
+  enabled: false
+
+  # Should the filter send a message to online staff notifying them of someone
+  # triggering the chat filter?
+  notify-staff: true
+
+  # Define your filters here
+  filters:
+    racism:
+      # The punishment to run on the player which triggers the 'racism'
+      # filter.
+      punishment: 'harassment'
+
+      # Regex patterns the chat filter will check to see if the filter was
+      # triggered.
+      patterns:
+        - 'pattern1'
+        - 'pattern2'
+    spam:
+      # Removing 'punishment' will run no punishment when triggered.
+      patterns:
+        - "(.)(\\1){5,}" # 5 chars in a row
+        - "[A-Z]{10,}" # Too many caps

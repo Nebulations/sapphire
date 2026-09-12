@@ -1,0 +1,171 @@
+actions:
+  warn:
+    # Should the player be kicked when warned?
+    kick-player: false
+
+    # Should a sound effect play when warning the player?
+    # The sound only plays if 'kick-player' is set to false.
+    sfx:
+      id: 'BLOCK_ANVIL_DESTROY'
+      volume: 1
+      pitch: 0.5
+
+    # The message to display to the player when warned.
+    # (Note: If 'kick-player' is set to false, this will send all messages in chat)
+    # Placeholders:
+    # %player%      | Name of the punished player
+    # %issuer%      | Name of the issuer
+    # %reason%      | Reason for the punishment (provided in the configuration.)
+    # %punish-id%   | Punishment ID of the player
+    # %punish-name% | The name of the punishment, specified in the punishment area.
+    # %duration%    | Duration of the punishment
+    # %time-left%   | Time left of the punishment
+    # %expires-on%  | Date of expiration of the punishment
+    # %issued-on%   | Date when the punishment was issued
+    #
+    # All of these placeholders work for bans, mutes, warnings and reminders.
+    messages:
+      - ""
+      - "<yellow>You have been warned!"
+      - "<white>Reason: %reason%"
+      - ""
+
+  mute:
+    kick-player: false
+
+    sfx:
+      id: 'BLOCK_ANVIL_DESTROY'
+      volume: 1
+      pitch: 0.5
+
+    messages:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - '<aqua>[Sapphire] <white>You have been muted for %punish-name%. This mute expires in %time-left%.'
+
+  ban:
+    messages:
+      - "<dark_red><bold>YOUR ACCOUNT HAS BEEN BANNED"
+      - ""
+      - "<white>%reason%"
+      - ""
+      - "<white>You will be unbanned in: <red>%time-left%"
+      - "<white>Support ID: #%punish-id%"
+      - ""
+      - "<white>Appeal at <blue>discord.gg/example-link"
+      - ""
+
+  # How reminders should be formatted.
+  reminders:
+    - ''
+    - '<aqua><bold>REMINDER!'
+    - '<gray>%reason%'
+    - '<gray>Make sure to follow our rules!'
+    - ''
+
+# Duration supports:
+# - Xm -> X minutes
+# - Xh -> X hours
+# - Xd -> X days
+# - PERM -> Permanent ban
+# DURATIONS CANNOT BE COMBINED! (Xm Xh will NOT work)
+punishments:
+  harassment:
+    # The name of the punishment
+    name: 'Harassment'
+    # The short ID for the punishment.
+    id: 'harassment'
+    # The reason why the punishment was given.
+    reason: 'Harassment is not tolerated on the server.'
+    # If, when issued, a reminder will be sent to all players.
+    reminder: true
+    # The item in the /punish GUI.
+    gui-item: 'RED_DYE'
+    # List of offenses, to automatically scale punishments.
+    offenses:
+      # For the first offense, we issue a warning.
+      1:
+        type: 'WARN'
+      # For the second offense, we issue a 1-day ban.
+      2:
+        type: 'BAN'
+        duration: '1d'
+      # For the third offense, we issue a 7-day ban.
+      3:
+        type: 'BAN'
+        duration: '7d'
+      # For the fourth offense, we issue a 30-day ban. If the player continues
+      # harassing people, the player will keep being issued the 30-day ban.
+      4:
+        type: 'BAN'
+        duration: '30d'
+  unfair-advantage:
+    name: 'Unfair Advantage'
+    id: 'unfair_advantage'
+    reason: 'Using blacklisted modifications is not allowed.'
+    reminder: true
+    gui-item: 'MACE'
+    offenses:
+      1:
+        type: 'BAN'
+        duration: '1d'
+      2:
+        type: 'BAN'
+        duration: '30d'
+      3:
+        type: 'BAN'
+        duration: 'PERM'
+  spamming:
+    name: 'Spamming/Chat Flood'
+    id: 'spam'
+    reason: 'Spamming or intentionally flooding chat is not allowed.'
+    reminder: true
+    gui-item: 'SLIME_BALL'
+    offenses:
+      1:
+        type: 'WARN'
+      2:
+        type: 'MUTE'
+        duration: '1d'
+      3:
+        type: 'MUTE'
+        duration: '7d'
+      4:
+        type: 'MUTE'
+        duration: '30d'
+  trolling:
+    name: 'Trolling'
+    id: 'trolling'
+    reason: 'Trolling is not allowed.'
+    reminder: true
+    gui-item: 'REDSTONE'
+    offenses:
+      1:
+        type: 'WARN'
+      2:
+        type: 'MUTE'
+        duration: '3d'
+      3:
+        type: 'MUTE'
+        duration: '14d'
+  malicious_links:
+    name: 'Sending Malicious Links'
+    id: 'links'
+    reason: 'Sending malicious links is not allowed.'
+    reminder: true
+    gui-item: 'IRON_CHAIN'
+    offenses:
+      1:
+        type: 'WARN'
+      2:
+        type: 'MUTE'
+        duration: '1d'
+      3:
+        type: 'MUTE'
+        duration: '7d'

@@ -1,0 +1,65 @@
+# Configuration version. Do not edit this manually, as it may break your config.
+version: '1.0.0'
+
+general:
+
+  # Edit how messages are formatted.
+  messages:
+    # The server prefix to send in a message.
+    prefix: '<aqua>[Sapphire] '
+
+    # The filler color (default is white)
+    filler-color: '<white>'
+
+    # The error color (default is red)
+    error-color: '<red>'
+
+  # Date format to use for date-related messages.
+  # day/month/year hour/minute/seconds format.
+  date-format: 'dd/MM/yy HH:mm:ss'
+
+  # The cooldown between reports, in seconds.
+  report-cooldown: 60
+
+  # Supported placeholders:
+  # - %name%    | Name of the player.
+  # - %message% | Message sent.
+  staffchat-format: '<aqua><bold>STAFF<reset> <aqua>%name%: <white>%message%'
+
+  # Message to send after clearing chat.
+  clearchat-format: '<aqua><bold>CLEARCHAT <reset><white>Chat cleared by <aqua>%name%<white>.'
+
+  # Message to send when muting/unmuting chat.
+  mutechat-format: '<aqua>[Sapphire] <white>The chat has been %muted%.'
+
+  # Message to send when a player attempts to speak when chat is muted.
+  mutechat-speak-attempt: '<aqua>[Sapphire] <white>The chat is currently muted.'
+
+# Configuring storage method. Supports sqlite and mysql.
+storage:
+  type: 'sqlite'
+
+  # Configure using your MySQL information if using MySQL.
+  mysql:
+    username: ''
+    password: ''
+    host: '127.0.0.1'
+    port: 3306
+    database-name: 'sapphire'
+
+# Discord support
+discord:
+  enabled: false
+
+  # Your discord bot token.
+  token: ''
+
+  # Where the discord bot will log punishments and chat filter triggers. Leave blank to disable.
+  punishments: ''
+
+  # Where the discord bot will log reports. Leave blank to disable.
+  reports: ''
+
+  # The role ID used by staff. This is used to check for permissions before allowing players to
+  # run commands, like /history within your Discord server.
+  staff-role: ''
